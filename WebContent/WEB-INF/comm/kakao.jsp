@@ -6,18 +6,42 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
 </head>
 <body>
-    <c:if test="${userId eq null}">
-        <a href="https://kauth.kakao.com/oauth/authorize
-            ?client_id=b5f85af25d1bdf961d4f2016bafe3c6e
-            &redirect_uri=http://localhost:8000/login
-            &response_type=code">
-            <img src="img/member/01.png">
-        </a>
-    </c:if>
-    <c:if test="${userId ne null}">
-        <h1>로그인 성공입니다</h1>
-    </c:if>
+<a id="kakao-login-btn"></a>
+<script type='text/javascript'>
+  //<![CDATA[
+    // 사용할 앱의 JavaScript 키를 설정해 주세요.
+    Kakao.init('2a7355b444cbdd1f5985d00f418807ee');
+    // 카카오 로그인 버튼을 생성합니다.
+    Kakao.Auth.createLoginButton({
+      container: '#kakao-login-btn',
+      success: function(authObj) {
+        // 로그인 성공시, API를 호출합니다.
+        Kakao.API.request({
+          url: '/v2/user/me',
+          success: function(res) {
+            login(JSON.stringify(res));
+          },
+          fail: function(error) {
+            alert(JSON.stringify(error));
+          }
+        });
+      },
+      fail: function(err) {
+        alert(JSON.stringify(err));
+      }
+    });
+  //]]>
+  
+  function login(info)
+  {
+	  console.log("실행!");
+	  location.href = "memberJoin.do?code="+info;
+  }
+</script>
+</script>
 </body>
 </html>

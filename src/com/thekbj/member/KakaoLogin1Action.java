@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.thekbj.comm.Action;
 import com.thekbj.comm.ForwardAction;
 
-public class KakaoLoginAction implements Action {
+public class KakaoLogin1Action implements Action {
 
 	@Override
 	public ForwardAction execute(HttpServletRequest request, HttpServletResponse response)

@@ -9,19 +9,15 @@ import javax.servlet.http.HttpServletResponse;
 import com.thekbj.comm.Action;
 import com.thekbj.comm.ForwardAction;
 
-public class MemberJoinAction implements Action {
+public class KakaoLogin2Action implements Action {
 
 	@Override
 	public ForwardAction execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
 		ForwardAction forward = new ForwardAction();
 		forward.setForward(true);
-		forward.setUrl("/WEB-INF/comm/join.html");
-		
-		String code = request.getParameter("code");
-		System.out.println("code : " + code);
-		
+		forward.setUrl("/WEB-INF/comm/kakao.html");
+		 
 		return forward;
 	}
 
