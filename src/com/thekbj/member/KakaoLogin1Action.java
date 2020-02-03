@@ -16,7 +16,7 @@ public class KakaoLogin1Action implements Action {
 			throws ServletException, IOException {
 		ForwardAction forward = new ForwardAction();
 		forward.setForward(true);
-		forward.setUrl("/WEB-INF/comm/kakao.jsp");
+		forward.setUrl("/WEB-INF/loginAPI/kakao.jsp");
 		 
 		return forward;
 	}

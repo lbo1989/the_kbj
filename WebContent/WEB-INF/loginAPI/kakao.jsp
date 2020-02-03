@@ -11,8 +11,16 @@
 </head>
 <body>
 <a id="kakao-login-btn"></a>
+
+<form method="post" action="#" name="frm">
+		
+		<input type="submit" value="전송">
+</form>
+
 <script type='text/javascript'>
-  //<![CDATA[
+function login()
+{
+	//<![CDATA[
     // 사용할 앱의 JavaScript 키를 설정해 주세요.
     Kakao.init('2a7355b444cbdd1f5985d00f418807ee');
     // 카카오 로그인 버튼을 생성합니다.
@@ -24,6 +32,7 @@
           url: '/v2/user/me',
           success: function(res) {
             login(JSON.stringify(res));
+            /* alert(JSON.stringify(res)); */
           },
           fail: function(error) {
             alert(JSON.stringify(error));
@@ -35,13 +44,10 @@
       }
     });
   //]]>
-  
-  function login(info)
-  {
-	  console.log("실행!");
-	  location.href = "memberJoin.do?code="+info;
-  }
+}
 </script>
-</script>
+
+
+
 </body>
 </html>
