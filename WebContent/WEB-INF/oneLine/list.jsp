@@ -146,7 +146,7 @@
 <jsp:include page="../comm/footer.jsp"></jsp:include>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="js/oneLine/list.js"></script>
-<script>
+<script language="JavaScript" charset="UTF-8">
 let mno = <%= session.getAttribute("mno") %>
 
 

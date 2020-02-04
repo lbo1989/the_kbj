@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.thekbj.comm.Action;
 import com.thekbj.comm.ForwardAction;
 
-public class googleLoginAction implements Action {
+public class GoogleLoginAction implements Action {
 
 	@Override
 	public ForwardAction execute(HttpServletRequest request, HttpServletResponse response)
@@ -20,5 +20,4 @@ public class googleLoginAction implements Action {
 		 
 		return forward;
 	}
-
 }

@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
@@ -15,21 +15,34 @@
 </form>
 </a>
 <script type='text/javascript'>
+//kakao javascript ë°©ì‹
 document.getElementById("myform").addEventListener("click", function(event){
 	  event.preventDefault()
 	});
 	
   //<![CDATA[
-    // »ç¿ëÇÒ ¾ÛÀÇ JavaScript Å°¸¦ ¼³Á¤ÇØ ÁÖ¼¼¿ä.
+    // ì‚¬ìš©í•  ì•±ì˜ JavaScript í‚¤ë¥¼ ì„¤ì •í•´ ì£¼ì„¸ìš”.
     Kakao.init('2a7355b444cbdd1f5985d00f418807ee');    
     function loginWithKakao() {
    	
-      // ·Î±×ÀÎ Ã¢À» ¶ç¿ó´Ï´Ù.
+      // ë¡œê·¸ì¸ ì°½ì„ ë„ì›ë‹ˆë‹¤.
       Kakao.Auth.login({
         success: function(authObj) {
           //alert(JSON.stringify(authObj));
-          	document.getElementById("code").value=JSON.stringify(authObj);
+          Kakao.API.request({
+          url: '/v2/user/me',
+          success: function(res) {
+            //alert(JSON.stringify(res));
+            document.getElementById("code").value=JSON.stringify(res);
+            alert(document.getElementById("code").value);
         	document.getElementById("myform").submit();
+          },
+          fail: function(error) {
+            alert(JSON.stringify(error));
+          }
+        });
+          
+          	
         },
         fail: function(err) {
           alert(JSON.stringify(err));
